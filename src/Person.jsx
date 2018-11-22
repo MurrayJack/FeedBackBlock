@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Person = ({ Item, OnClick, Selected }) => (
-  <PersonWrapper onClick={OnClick.bind(this, Item)}>
+export const Person = ({ Item, Selected, OnClick, Index }) => (
+  <PersonWrapper
+    className={Selected ? "selected" : null}
+    onClick={OnClick.bind(this, Item, Index)}
+  >
     <div>
       <ImageWrapper style={{ backgroundImage: `url(${Item.Image})` }} />
     </div>
@@ -36,10 +39,18 @@ const PersonWrapper = styled.button`
   filter: grayscale(100%);
   transition: filter linear 0.25s;
 
+  &.selected {
+    position: relative;
+    background-color: #f6f8fa;
+    filter: grayscale(0);
+    z-index: 1;
+  }
+
   &:focus {
     position: relative;
     background-color: #f6f8fa;
     filter: grayscale(0);
+    z-index: 1;
   }
 
   &:hover {

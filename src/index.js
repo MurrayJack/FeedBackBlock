@@ -62,7 +62,8 @@ class Application extends React.Component {
 
     this.state = {
       Info: data.Person[0].Quote,
-      QuoteChange: ""
+      QuoteChange: "",
+      SelectedIndex: 0
     };
   }
 
@@ -109,18 +110,26 @@ class Application extends React.Component {
           {this.state.Info}
         </QuoteWrapper>
         <PersonWrapper>
-          {data.Person.map(item => (
-            <Person Item={item} OnClick={this.handleClick} />
+          {data.Person.map((item, index) => (
+            <Person
+              Item={item}
+              Index={index}
+              Selected={this.state.SelectedIndex === index}
+              OnClick={this.handleClick}
+            />
           ))}
         </PersonWrapper>
       </Wrapper>
     );
   }
 
-  handleClick = item => {
-    this.setState({ QuoteChange: "loading" }, () => {
+  handleClick = (item, index) => {
+    this.setState({ QuoteChange: "loading", SelectedIndex: index }, () => {
       window.setTimeout(() => {
-        this.setState({ Info: item.Quote, QuoteChange: "" });
+        this.setState({
+          Info: item.Quote,
+          QuoteChange: ""
+        });
       }, 250);
     });
   };
