@@ -61,9 +61,9 @@ class Application extends React.Component {
     super(props);
 
     this.state = {
-      Info: data.Person[0].Quote,
+      Info: data.Person[2].Quote,
       QuoteChange: "",
-      SelectedIndex: 0
+      SelectedIndex: 2
     };
   }
 
