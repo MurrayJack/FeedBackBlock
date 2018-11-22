@@ -43,7 +43,7 @@ const QuoteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   color: #1c364c;
   font-size: 32px;
   line-height: 35px;
@@ -85,9 +85,9 @@ class Application extends React.Component {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   id="Careers-Concept-v3-Copy"
@@ -112,6 +112,7 @@ class Application extends React.Component {
         <PersonWrapper>
           {data.Person.map((item, index) => (
             <Person
+              key={item.Name}
               Item={item}
               Index={index}
               Selected={this.state.SelectedIndex === index}
