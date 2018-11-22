@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Person = ({ Item, OnClick, Selected }) => (
   <PersonWrapper onClick={OnClick.bind(this, Item)}>
     <div>
-      <Image />
+      <ImageWrapper style={{ backgroundImage: `url(${Item.Image})` }} />
     </div>
     <PersonName>{Item.Name}</PersonName>
     <PositionName>{Item.Position}</PositionName>
@@ -13,6 +13,7 @@ export const Person = ({ Item, OnClick, Selected }) => (
 
 const PositionName = styled.div`
   text-align: center;
+  opacity: 0.65;
 `;
 
 const PersonName = styled.div`
@@ -43,10 +44,13 @@ const PersonWrapper = styled.button`
   }
 `;
 
-const Image = styled.div`
+const ImageWrapper = styled.div`
   height: 85px;
   width: 85px;
   border-radius: 50%;
   background-color: #f6f8fa;
   margin-bottom: 20px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
 `;
