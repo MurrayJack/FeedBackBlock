@@ -32,15 +32,19 @@ const PersonWrapper = styled.button`
   max-width: 240px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center
+  filter: grayscale(100%);
+  transition: filter linear 0.25s;
 
   &:focus {
     position: relative;
     background-color: #f6f8fa;
+    filter: grayscale(0);
   }
 
   &:hover {
     border: 1px solid #ddd;
+    filter: grayscale(0);
   }
 `;
 
