@@ -17,7 +17,7 @@ export const Person = ({ Item, Selected, OnClick, Index }) => (
 
 const PositionName = styled.div`
   text-align: center;
-  opacity: 0.65;
+  opacity: 0.8;
 `;
 
 const PersonName = styled.div`
