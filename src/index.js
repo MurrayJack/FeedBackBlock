@@ -43,7 +43,7 @@ const QuoteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   color: #1c364c;
   font-size: 32px;
   line-height: 35px;

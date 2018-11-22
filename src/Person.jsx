@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const Person = ({ Item, Selected, OnClick, Index }) => (
   <PersonWrapper
     className={Selected ? "selected" : null}
-    onClick={OnClick.bind(this, Item, Index)}
+    onClick={!Selected ? OnClick.bind(this, Item, Index) : undefined}
+    aria-label={Item.Name}
   >
     <div>
       <ImageWrapper style={{ backgroundImage: `url(${Item.Image})` }} />
@@ -37,25 +38,20 @@ const PersonWrapper = styled.button`
   flex-direction: column;
   align-items: center
   filter: grayscale(100%);
-  transition: filter linear 0.25s;
+  transition: all linear 0.25s;
+  margin: 5px
 
   &.selected {
     position: relative;
     background-color: #f6f8fa;
     filter: grayscale(0);
-    z-index: 1;
-  }
-
-  &:focus {
-    position: relative;
-    background-color: #f6f8fa;
-    filter: grayscale(0);
-    z-index: 1;
+    z-index: 1; 
+    border: 1px solid #f6f8fa;
   }
 
   &:hover {
-    border: 1px solid #ddd;
-    filter: grayscale(0);
+    border: 1px solid #f6f8fa;
+    filter: grayscale(0); 
   }
 `;
 
