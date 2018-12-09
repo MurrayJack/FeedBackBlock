@@ -45,9 +45,9 @@ const PersonWrapper = styled.button`
     background-color: #f6f8fa;
     filter: grayscale(0);
     z-index: 1; 
-  }
 
   &:hover {
+    border: 1px solid #f6f8fa;
     filter: grayscale(0); 
   }
 `;

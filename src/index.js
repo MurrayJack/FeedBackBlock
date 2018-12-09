@@ -158,8 +158,12 @@ class Application extends React.Component {
         </PersonWrapper>
         <PageWrapper>
           {data.Person.map((item, index) => (
-            <PageCircle
-              className={this.state.SelectedIndex === index ? "selected" : ""}
+            <Person
+              key={item.Name}
+              Item={item}
+              Index={index}
+              Selected={this.state.SelectedIndex === index}
+              OnClick={this.handleClick}
             />
           ))}
         </PageWrapper>
