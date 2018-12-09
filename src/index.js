@@ -14,7 +14,13 @@ const Wrapper = styled.div`
 const PersonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 1100px;
+  width: 100%;
+  overflow: hidden;
+`;
+
+const PersonSlider = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const closingAnimation = keyframes`
@@ -38,21 +44,45 @@ const loadingAnimation = keyframes`
 
 const QuoteWrapper = styled.div`
   height: 200px;
-  width: 800px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   color: #1c364c;
-  font-size: 32px;
+  font-size: 26px;
   line-height: 35px;
   text-align: center;
+  width: 90%;
+  padding: 20px;
 
   animation: ${loadingAnimation} 0.25s ease-in-out 0s forwards;
 
   &.loading {
     animation: ${closingAnimation} 0.25s ease-in-out 0s forwards;
+  }
+`;
+
+const PageWrapper = styled.div`
+  display: flex;
+`;
+
+const PageCircle = styled.button`
+  height: 20px;
+  width: 20px;
+  background-color: #1c364c;
+  border-radius: 50%;
+  margin: 1em 0.25em;
+  opacity: 0.4;
+  transition: opacity ease-in-out 0.25s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.selected {
+    opacity: 1;
   }
 `;
 
@@ -85,9 +115,9 @@ class Application extends React.Component {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   id="Careers-Concept-v3-Copy"
@@ -110,15 +140,29 @@ class Application extends React.Component {
           {this.state.Info}
         </QuoteWrapper>
         <PersonWrapper>
+          <PersonSlider
+            style={{
+              transform: `translateX(-${this.state.SelectedIndex * 70}vw)`
+            }}
+          >
+            {data.Person.map((item, index) => (
+              <Person
+                key={item.Name}
+                Item={item}
+                Index={index}
+                Selected={this.state.SelectedIndex === index}
+                OnClick={this.handleClick}
+              />
+            ))}
+          </PersonSlider>
+        </PersonWrapper>
+        <PageWrapper>
           {data.Person.map((item, index) => (
-            <Person
-              Item={item}
-              Index={index}
-              Selected={this.state.SelectedIndex === index}
-              OnClick={this.handleClick}
+            <PageCircle
+              className={this.state.SelectedIndex === index ? "selected" : ""}
             />
           ))}
-        </PersonWrapper>
+        </PageWrapper>
       </Wrapper>
     );
   }
