@@ -30,10 +30,9 @@ const PersonWrapper = styled.button`
   color: #1c364c;
   font-size: 18px;
   line-height: 24px;
-  border: 1px solid transparent;
+  border: 1px solid #ddd;
   cursor: pointer;
-  width: 240px;
-  max-width: 240px;
+  flex: 0 0 70vw;
   display: flex;
   flex-direction: column;
   align-items: center
@@ -46,8 +45,6 @@ const PersonWrapper = styled.button`
     background-color: #f6f8fa;
     filter: grayscale(0);
     z-index: 1; 
-    border: 1px solid #f6f8fa;
-  }
 
   &:hover {
     border: 1px solid #f6f8fa;
